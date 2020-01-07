@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="nav_bar">#333399</color>
     <color name="font_color">#eaeaf4</color>
+    <color name="background_color">#7070b7</color>
 </resources>

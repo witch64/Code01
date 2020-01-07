@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"Profile", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_aboutUs -> {
-                Toast.makeText(this,"About Us", Toast.LENGTH_SHORT).show()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                    AboutUsFragment()).commit()
             }
             R.id.nav_recommended -> {
                 Toast.makeText(this,"Recommended", Toast.LENGTH_SHORT).show()
