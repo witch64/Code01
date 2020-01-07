@@ -2,10 +2,10 @@
     <string name="app_name">Code00</string>
     <string name="navigation_drawer_open">Open Navigation Bar</string>
     <string name="navigation_drawer_close">Close Navigation Bar</string>
-    <string name="about_us">In THINK ABOUT IT TWICE application, we hope that user can have fun with our application because we want to help the user to improve their english.
-Nowadays, young generation rather to play their smartphone then studying. They didnt want to spend sit in front of the table to study.
-
-Throughout this application, user can use this to improve their knowledge with interesting question. Our mission at THINK ABOUT IT TWICE
+    <string name="about_us1">In THINK ABOUT IT TWICE application, we hope that user can have fun with our application because we want to help the user to improve their english.
+Nowadays, young generation rather to play their smartphone then studying. They didnt want to spend sit in front of the table to study.</string>
+    <string name="about_us2">Throughout this application, user can use this to improve their knowledge with interesting question. Our mission at THINK ABOUT IT TWICE
 is to hope that user have more interest in studying. Today we provide some simple and interesting question
 in this app. We hope that user will enjoy using our app.Thanks you!</string>
+    <string name="blank"> </string>
 </resources>

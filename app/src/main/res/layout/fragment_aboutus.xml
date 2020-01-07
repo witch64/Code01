@@ -8,6 +8,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
         android:textColor="@color/font_color"
         android:text="About Us"/>
 
@@ -16,14 +18,30 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:layout_marginLeft="3dp"
-        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:width="300dp"
+        android:height="300dp"
         android:src="@mipmap/ic_question_mark_foreground"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="18dp"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
         android:textColor="@color/font_color"
-        android:text="@string/about_us"/>
+        android:text="@string/about_us1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="@string/blank"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/font_color"
+        android:text="@string/about_us2"/>
 </LinearLayout>
