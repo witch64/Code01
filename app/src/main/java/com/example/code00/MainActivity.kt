@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"LeaderBoard", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_feedback -> {
-                Toast.makeText(this,"Feedback", Toast.LENGTH_SHORT).show()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                    FeedbackFragment()).commit()
             }
             R.id.nav_profile -> {
                 Toast.makeText(this,"Profile", Toast.LENGTH_SHORT).show()
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_recommended -> {
                 Toast.makeText(this,"Recommended", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
