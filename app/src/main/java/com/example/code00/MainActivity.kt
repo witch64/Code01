@@ -1,14 +1,17 @@
 package com.example.code00
 
+import android.app.PendingIntent.getActivity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.MenuItem
 import android.widget.Toast
+import com.example.code00.Feedback.FeedbackFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +33,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
-                PlayFragment()).commit()
+                RegisterFragment()
+            ).commit()
         }
     }
 
@@ -45,7 +49,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_feedback -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
-                    FeedbackFragment()).commit()
+                    FeedbackFragment()
+                ).commit()
             }
             R.id.nav_profile -> {
                 Toast.makeText(this,"Profile", Toast.LENGTH_SHORT).show()
@@ -57,7 +62,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_recommended -> {
                 Toast.makeText(this,"Recommended", Toast.LENGTH_SHORT).show()
             }
-
+            R.id.nav_logout -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginFragment::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
