@@ -63,4 +63,18 @@ class DatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAM
         db.update(TABLE_NAME, contentValues, COL_2 + "= ?", arrayOf(COL_2))
         db.close()
     }
+
+    fun getUsername() {
+        var username = ""
+        val cursor = this.readableDatabase.query(
+            TABLE_NAME, arrayOf(COL_2),
+            null, null, null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                username = cursor.getString(0)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+    }
 }

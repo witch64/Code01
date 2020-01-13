@@ -5,30 +5,37 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome To Our Trivia App" />
+        android:layout_marginTop="100dp"
+        android:text="Welcome to Our English Trivia App"
+        android:textAlignment="center"
+        android:textColor="@color/font_color"
+        android:textSize="30dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_question_mark_foreground" />
 
     <Button
-        android:id="@+id/homepage_register_btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:layout_margin="10dp"
+        android:text="Login" />
 
     <Button
-        android:id="@+id/homepage_login_btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_margin="10dp"
+        android:text="Register" />
 </LinearLayout>

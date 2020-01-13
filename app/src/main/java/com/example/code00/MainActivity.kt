@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val toolbar = findViewById(R.id.toolbar) as Toolbar?
-        //setSupportActionBar(toolbar)
 
         val navView = findViewById(R.id.nav_view) as NavigationView
         val toggle = ActionBarDrawerToggle(
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
-                LoginFragment()
+                LoginSelectFragment()
             ).commit()
         }
     }
@@ -64,8 +62,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, LoginFragment::class.java)
-                startActivity(intent)
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                    LoginSelectFragment()).commit()
                 finish()
             }
         }
