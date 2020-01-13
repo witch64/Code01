@@ -14,6 +14,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast.makeText
 import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -24,15 +25,12 @@ import kotlin.collections.Map
 
 class RegisterFragment : Fragment() {
     lateinit var r_username : EditText
-    lateinit var r_email : EditText
     lateinit var r_password : EditText
-    lateinit var r_phone : EditText
+    lateinit var r_retype_password : EditText
     lateinit var r_register_button : Button
     lateinit var r_sign_in : TextView
     lateinit var r_progressBar : ProgressBar
-    lateinit var auth: FirebaseAuth
-    lateinit var firestore: FirebaseFirestore
-    lateinit var userID : String
+    lateinit var db : DatabaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,80 +39,57 @@ class RegisterFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_register, container, false)
 
+        val db = DatabaseHelper(context)
         r_username = root.findViewById(R.id.username)
-        r_email = root.findViewById(R.id.email)
         r_password = root.findViewById(R.id.password)
-        r_phone = root.findViewById(R.id.phone)
+        r_retype_password = root.findViewById(R.id.retype_password)
         r_register_button = root.findViewById(R.id.register_button)
         r_sign_in = root.findViewById(R.id.sign_in)
         r_progressBar = root.findViewById(R.id.progressBar)
 
-        auth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
+        val fragment: Fragment
 
-        if (auth.currentUser != null)
-        {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
+        val transaction: FragmentTransaction =
+            fragmentManager!!.beginTransaction()
+
+        r_sign_in.setOnClickListener {
+            transaction.replace(R.id.fragment_container,
+                LoginFragment())
+            transaction.addToBackStack(null) // this will manage backstack
+            transaction.commit()
         }
 
         r_register_button.setOnClickListener{
-                val email_insert = r_email.getText().toString().trim()
-                val password_insert = r_password.getText().toString().trim()
-                val username_insert = r_username.getText().toString().trim()
-                val phone_insert = r_username.getText().toString().trim()
+            val user : String = r_username.text.toString().trim()
+            val pwd : String = r_password.text.toString().trim()
+            val retype_pwd : String = r_retype_password.text.toString().trim()
 
-                if (TextUtils.isEmpty(email_insert)){
-                    r_email.error = "Email is required!"
-                }
-
-                if (TextUtils.isEmpty(password_insert)){
-                    r_password.error = "Password is required!"
-                }
-
-                if (password_insert.length < 6){
-                    r_password.error = "Password length must be > 6 characters"
-                }
-
-                r_progressBar.visibility
-
-                //register the user in firebase
-
-
-                auth.createUserWithEmailAndPassword(email_insert,password_insert).addOnCompleteListener(OnCompleteListener<AuthResult>{
-                @Override
-                    fun onResume(@NonNull task : Task<AuthResult>){
-                        if (task.isSuccessful()){
-                            Toast.makeText(activity, "User Created.",Toast.LENGTH_SHORT).show()
-                            userID = auth.currentUser!!.uid
-                            val documentReference : DocumentReference
-                            documentReference = firestore.collection("users").document(userID)
-
-                            var user : HashMap<String, Object>
-                                    = HashMap<String, Object> ()
-
-                            /*user.put("username", f_username)
-                            user.put("email",email)
-                            user.put("phone",phone)*/
-
-                            val intent = Intent(getActivity(), MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else
-                        {
-                            Toast.makeText(activity, "Error !" + task.exception.toString(),Toast.LENGTH_SHORT).show()
-                            progressBar.setVisibility(View.GONE)
-                        }
+            if (!TextUtils.isEmpty(user)){
+                if (!TextUtils.isEmpty(retype_pwd)){
+                    if (!TextUtils.isEmpty(pwd)){
                     }
-                })
+                    if (pwd.equals(retype_pwd)){
+                        val check : Long = db.addUser(user,pwd)
+                        if (check > 0){
+                            progressBar.visibility = View.VISIBLE
+                            Toast.makeText(context,"Register Successful", Toast.LENGTH_LONG).show()
+                            transaction.replace(R.id.fragment_container,
+                                LoginFragment())
+                            transaction.addToBackStack(null) // this will manage backstack
+                            transaction.commit()
+                        }else{
+                            Toast.makeText(context,"User exist", Toast.LENGTH_SHORT).show()
+                        }
+                    }else{
+                        Toast.makeText(context,"Password is not match", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-
-        r_sign_in.setOnClickListener {
-            val intent = Intent(getActivity(), LoginFragment::class.java)
-            startActivity(intent)
+            else
+            {
+                Toast.makeText(context,"Please fill in the blank", Toast.LENGTH_SHORT).show()
+            }
         }
-
         return root
     }
 }

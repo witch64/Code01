@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
-                RegisterFragment()
+                LoginFragment()
             ).commit()
         }
     }
@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }

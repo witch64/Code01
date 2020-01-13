@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create New Account"
-        android:textColor="@color/font_color"
         android:textSize="30dp"
         android:layout_margin="10dp"
         tools:layout_editor_absoluteY="59dp" />
@@ -30,18 +29,6 @@
         android:padding="10dp" />
 
     <EditText
-        android:id="@+id/email"
-        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:ems="10"
-        android:hint="Email"
-        android:layout_margin="10dp"
-        android:inputType="textPersonName"
-        android:padding="10dp" />
-
-    <EditText
         android:id="@+id/password"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="match_parent"
@@ -54,15 +41,15 @@
         android:padding="10dp" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/retype_password"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="Phone Number"
+        android:hint="Retype Password"
         android:layout_margin="10dp"
-        android:inputType="textPhonetic"
+        android:inputType="textPassword"
         android:padding="10dp" />
 
     <Button
