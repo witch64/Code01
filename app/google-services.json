@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "989004796454",
+    "firebase_url": "https://taitacc.firebaseio.com",
+    "project_id": "taitacc",
+    "storage_bucket": "taitacc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989004796454:android:5f51cfab24eafb872e8ce7",
+        "android_client_info": {
+          "package_name": "com.example.code00"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989004796454-iaofb9oaj0qaen6ml579omm6ah794eaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.code00",
+            "certificate_hash": "4d81b48f47bffba65ebdfc237f6937df7327ebec"
+          }
+        },
+        {
+          "client_id": "989004796454-o4fkb0qgp52gs29jek7pnn1asmjl04th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHM1Etv3w6OmA1G8FHLy6yIyX9QX6COkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989004796454-o4fkb0qgp52gs29jek7pnn1asmjl04th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
